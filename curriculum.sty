@@ -31,84 +31,84 @@
 
 % Define candidate string variable
 \newcommand{\CandidateString}[1]{
-    \noindent\Huge\textbf{Name}
+    {\noindent\Huge\textbf{Name}}
 }
 
 % Set candidate string variable
 \newcommand{\Candidate}[1]{
-    \renewcommand{\CandidateString}{\noindent\Huge\textbf{#1}}
+    \renewcommand{\CandidateString}{{\noindent\Huge\textbf{#1}}}
 }
 
 % Define current job title string variable
 \newcommand{\CurrentTitleString}[1]{
-    \noindent\Large\textcolor{curriculum-color}{\textbf{Current job title}}
+    {\noindent\Large\textcolor{curriculum-color}{\textbf{Current job title}}}
 }
 
 % Set current job title string variable
 \newcommand{\CurrentTitle}[1]{
-    \renewcommand{\CurrentTitleString}{\noindent\Large\textcolor{curriculum-color}{\textbf{#1}}}
+    \renewcommand{\CurrentTitleString}{{\noindent\Large\textcolor{curriculum-color}{\textbf{#1}}}}
+}
+
+% Name and current occupation displayed in big text
+\newcommand{\Header}{
+    \CandidateString{}
+
+    \medskip
+    \CurrentTitleString{}
 }
 
 % Define email string variable
 \newcommand{\EmailString}[1]{
-    \noindent email@example.com \textcolor{curriculum-color}{\faEnvelopeO}%
+    \noindent\textcolor{curriculum-color}{\faEnvelopeO} email@example.com
 }
 
 % Set email string variable
 \newcommand{\Email}[1]{
-    \renewcommand{\EmailString}{\noindent #1 \textcolor{curriculum-color}{\faEnvelopeO}%
-    }
+    \renewcommand{\EmailString}{\noindent\textcolor{curriculum-color}{\faEnvelopeO} #1}
 }
 
 % Define phone number string variable
 \newcommand{\PhoneString}[1]{
-    \noindent +123 4567890 \textcolor{curriculum-color}{\faPhone}%
+    \noindent\textcolor{curriculum-color}{\faPhone} +123 4567890
 }
 
 % Set phone number string variable
 \newcommand{\Phone}[1]{
-    \renewcommand{\PhoneString}{\noindent #1 \textcolor{curriculum-color}{\faPhone}%
-    }
+    \renewcommand{\PhoneString}{\noindent\textcolor{curriculum-color}{\faPhone} #1}
 }
 
 % Define linkedin string variable
 \newcommand{\LinkedinString}[1]{
-    \noindent linkedin.com/in/username \textcolor{curriculum-color}{\faLinkedin}%
+    \noindent\textcolor{curriculum-color}{\faLinkedin} linkedin.com/in/username
 }
 
 % Set linkedin string variable
 \newcommand{\Linkedin}[1]{
-    \renewcommand{\LinkedinString}{\noindent linkedin.com/in/#1 \textcolor{curriculum-color}{\faLinkedin}%
-    }
+    \renewcommand{\LinkedinString}{\noindent\textcolor{curriculum-color}{\faLinkedin} linkedin.com/in/#1}
 }
 
 % Define github string variable
 \newcommand{\GithubString}[1]{
-    \noindent github.com/username \textcolor{curriculum-color}{\faGithub}%
+    \noindent\textcolor{curriculum-color}{\faGithub} github.com/username
 }
 
 % Set github string variable
 \newcommand{\Github}[1]{
-    \renewcommand{\GithubString}{\noindent github.com/#1 \textcolor{curriculum-color}{\faGithub}%
-    }
+    \renewcommand{\GithubString}{\noindent\textcolor{curriculum-color}{\faGithub} github.com/#1}
+}
+
+% Contacts and links
+\newcommand{\ContactsLinks}{
+    \medskip
+    \EmailString{}\quad
+    \PhoneString{}\quad
+    \LinkedinString{}\quad
+    \GithubString{}
 }
 
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
-    \noindent
-    \begin{minipage}{0.65\textwidth}
-        \CandidateString{}
+    \Header
 
-        \CurrentTitleString{}
-    \end{minipage}
-    \begin{minipage}{0.34\textwidth}
-        \raggedleft
-        \EmailString{}
-
-        \PhoneString{}
-
-        \LinkedinString{}
-
-        \GithubString{}
-    \end{minipage}
+    \ContactsLinks
 }
