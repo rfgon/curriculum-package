@@ -106,9 +106,27 @@
     \GithubString{}
 }
 
+% Define about me string variable
+\newcommand{\AboutMeString}[1]{
+    \noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec congue magna. Donec nec pellentesque urna, dictum eleifend turpis. Integer viverra turpis sem, vel porta magna porta ac. Vivamus interdum cursus tempus. Nunc mattis rutrum quam, vel aliquam urna efficitur non. Ut risus justo, sollicitudin ac purus non, condimentum pellentesque tellus. Aliquam sodales rhoncus nulla in malesuada. Cras pellentesque mi feugiat est imperdiet cursus. Aliquam elementum tortor vitae leo dictum dictum. In malesuada a felis eu pellentesque. Vivamus fringilla est in eros viverra rutrum. Ut porttitor, mauris sed fermentum vulputate, nulla eros commodo nibh, id egestas metus nulla ac ante. Sed eleifend ligula sed dui placerat, et laoreet eros ultrices. Suspendisse sit amet nunc ut lorem bibendum rutrum id id sapien.
+}
+
+% Set about me string variable
+\newcommand{\AboutMe}[1]{
+    \renewcommand{\AboutMeString}{\noindent #1}
+}
+
+% About me section
+\newcommand{\AboutMeSection}{
+    \medskip
+    \AboutMeString{}
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \Header
 
     \ContactsLinks
+
+    \AboutMeSection
 }
