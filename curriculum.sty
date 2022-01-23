@@ -18,7 +18,13 @@
 % Font type
 \usepackage{libertine}
 
+% Use colors
+\usepackage[dvipsnames]{xcolor}
+
 % User defined commands and variables
+
+% Define colors
+\colorlet{curriculum-color}{MidnightBlue}
 
 % Define candidate string variable
 \newcommand{\CandidateString}[1]{
@@ -30,7 +36,22 @@
     \renewcommand{\CandidateString}{\noindent\Huge\textbf{#1}}
 }
 
+% Define current job title string variable
+\newcommand{\CurrentTitleString}[1]{
+    \noindent\Large\textcolor{curriculum-color}{\textbf{Current job title}}
+}
+
+% Set current job title string variable
+\newcommand{\CurrentTitle}[1]{
+    \renewcommand{\CurrentTitleString}{\noindent\Large\textcolor{curriculum-color}{\textbf{#1}}}
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
-    \CandidateString{}
+    \noindent
+    \begin{minipage}{0.65\textwidth}
+        \CandidateString{}
+
+        \CurrentTitleString{}
+    \end{minipage}
 }
