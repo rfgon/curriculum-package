@@ -7,8 +7,7 @@
     top=0.5cm,
     bottom=0.5cm,
     left=0.5cm,
-    right=0.5cm,
-    showframe]{geometry}
+    right=0.5cm]{geometry}
 
 % Use selected language
 \usepackage[english]{babel}
@@ -72,6 +71,17 @@
     }
 }
 
+% Define linkedin string variable
+\newcommand{\LinkedinString}[1]{
+    \noindent linkedin.com/in/username \textcolor{curriculum-color}{\faLinkedin}%
+}
+
+% Set linkedin string variable
+\newcommand{\Linkedin}[1]{
+    \renewcommand{\LinkedinString}{\noindent linkedin.com/in/#1 \textcolor{curriculum-color}{\faLinkedin}%
+    }
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \noindent
@@ -85,5 +95,7 @@
         \EmailString{}
 
         \PhoneString{}
+
+        \LinkedinString{}
     \end{minipage}
 }
