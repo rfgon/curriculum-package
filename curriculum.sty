@@ -7,7 +7,8 @@
     top=0.5cm,
     bottom=0.5cm,
     left=0.5cm,
-    right=0.5cm]{geometry}
+    right=0.5cm,
+    showframe]{geometry}
 
 % Use selected language
 \usepackage[english]{babel}
@@ -60,6 +61,17 @@
     }
 }
 
+% Define phone number string variable
+\newcommand{\PhoneString}[1]{
+    \noindent +123 4567890 \textcolor{curriculum-color}{\faPhone}%
+}
+
+% Set phone number string variable
+\newcommand{\Phone}[1]{
+    \renewcommand{\PhoneString}{\noindent #1 \textcolor{curriculum-color}{\faPhone}%
+    }
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \noindent
@@ -71,5 +83,7 @@
     \begin{minipage}{0.34\textwidth}
         \raggedleft
         \EmailString{}
+
+        \PhoneString{}
     \end{minipage}
 }
