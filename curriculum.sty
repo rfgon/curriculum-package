@@ -17,3 +17,20 @@
 
 % Font type
 \usepackage{libertine}
+
+% User defined commands and variables
+
+% Define candidate string variable
+\newcommand{\CandidateString}[1]{
+    \noindent\Huge\textbf{Name}
+}
+
+% Set candidate string variable
+\newcommand{\Candidate}[1]{
+    \renewcommand{\CandidateString}{\noindent\Huge\textbf{#1}}
+}
+
+% Fill curriculum
+\newcommand{\MakeCurriculum}{
+    \CandidateString{}
+}
