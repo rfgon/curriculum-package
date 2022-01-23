@@ -21,6 +21,9 @@
 % Use colors
 \usepackage[dvipsnames]{xcolor}
 
+% Use many miscellaneous symbols
+\usepackage{fontawesome}
+
 % User defined commands and variables
 
 % Define colors
@@ -46,6 +49,17 @@
     \renewcommand{\CurrentTitleString}{\noindent\Large\textcolor{curriculum-color}{\textbf{#1}}}
 }
 
+% Define email string variable
+\newcommand{\EmailString}[1]{
+    \noindent email@example.com \textcolor{curriculum-color}{\faEnvelopeO}%
+}
+
+% Set email string variable
+\newcommand{\Email}[1]{
+    \renewcommand{\EmailString}{\noindent #1 \textcolor{curriculum-color}{\faEnvelopeO}%
+    }
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \noindent
@@ -53,5 +67,9 @@
         \CandidateString{}
 
         \CurrentTitleString{}
+    \end{minipage}
+    \begin{minipage}{0.34\textwidth}
+        \raggedleft
+        \EmailString{}
     \end{minipage}
 }
