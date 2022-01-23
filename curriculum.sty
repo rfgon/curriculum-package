@@ -24,10 +24,16 @@
 % Use many miscellaneous symbols
 \usepackage{fontawesome}
 
+% Use lists
+\usepackage{etoolbox}
+
 % User defined commands and variables
 
 % Define colors
 \colorlet{curriculum-color}{MidnightBlue}
+
+% etoolbox command
+\renewcommand*{\do}[1]{#1}
 
 % Define candidate string variable
 \newcommand{\CandidateString}[1]{
@@ -122,6 +128,39 @@
     \AboutMeString{}
 }
 
+% Education milestone counter
+\newcounter{educationMilestoneCounter}
+
+% Add education milestone to list
+\newcommand{\AddEducationMilestone}[3]{
+    {\large\textbf{#1}}
+
+    \medskip
+    \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3
+}
+
+% Define education milestone list
+\def\EducationMilestoneList{}
+
+% Create education milestone
+\newcommand{\EducationMilestone}[3]{
+    \stepcounter{educationMilestoneCounter}
+    \listadd{\EducationMilestoneList}{\AddEducationMilestone{#1}{#2}{#3}}
+}
+
+% Education section
+\newcommand{\EducationSection}{
+    \ifnum\the\value{educationMilestoneCounter}>0
+        \medskip
+        {\Large\textcolor{curriculum-color}{\textbf{Education}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \medskip
+        \dolistloop{\EducationMilestoneList}
+    \fi
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \Header
@@ -129,4 +168,9 @@
     \ContactsLinks
 
     \AboutMeSection
+
+    \noindent
+    \begin{minipage}[t]{0.635\textwidth}
+        \EducationSection
+    \end{minipage}
 }
