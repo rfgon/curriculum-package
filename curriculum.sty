@@ -82,6 +82,17 @@
     }
 }
 
+% Define github string variable
+\newcommand{\GithubString}[1]{
+    \noindent github.com/username \textcolor{curriculum-color}{\faGithub}%
+}
+
+% Set github string variable
+\newcommand{\Github}[1]{
+    \renewcommand{\GithubString}{\noindent github.com/#1 \textcolor{curriculum-color}{\faGithub}%
+    }
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \noindent
@@ -97,5 +108,7 @@
         \PhoneString{}
 
         \LinkedinString{}
+
+        \GithubString{}
     \end{minipage}
 }
