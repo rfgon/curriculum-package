@@ -426,6 +426,41 @@
     }{}
 }
 
+% Soft skills section toggle
+\newtoggle{showSoftSkills}
+
+% Create soft skill
+\newcommand{\AddSoftSkill}[1]{
+    % Empty line
+
+    \medskip
+    #1
+}
+
+% Define soft skills list
+\def\SoftSkillsList{}
+
+% Add soft skill to list
+\newcommand{\SoftSkill}[1]{
+    \toggletrue{showSoftSkills}
+    \listadd{\SoftSkillsList}{\AddSoftSkill{#1}}
+}
+
+% SoftSkills section
+\newcommand{\SoftSkillsSection}{
+    \iftoggle{showSoftSkills}{
+        \ifnum\the\value{numberRightSectionsCounter}>0
+            \bigskip
+        \fi
+        \stepcounter{numberRightSectionsCounter}
+        {\Large\textcolor{curriculum-color}{\textbf{Soft Skills}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \dolistloop{\SoftSkillsList}
+    }{}
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \Header
@@ -452,5 +487,7 @@
         \LanguagesSection
 
         \SkillsSection
+
+        \SoftSkillsSection
     \end{minipage}
 }
