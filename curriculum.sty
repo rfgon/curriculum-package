@@ -358,6 +358,9 @@
 % Define default right side width variable
 \FPeval{\y}{1-\x-0.03}
 
+% Number of right sections shown counter
+\newcounter{numberRightSectionsCounter}
+
 % Languages section toggle
 \newtoggle{showLanguages}
 
@@ -381,11 +384,45 @@
 % Languages section
 \newcommand{\LanguagesSection}{
     \iftoggle{showLanguages}{
+        \stepcounter{numberRightSectionsCounter}
         {\Large\textcolor{curriculum-color}{\textbf{Languages}}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
         \dolistloop{\LanguagesList}
+    }{}
+}
+
+% Skills section toggle
+\newtoggle{showSkills}
+
+% Create skill
+\newcommand{\AddSkill}[1]{
+    \textbf{\large#1}\quad
+}
+
+% Define skills list
+\def\SkillsList{}
+
+% Add skill to list
+\newcommand{\Skill}[1]{
+    \toggletrue{showSkills}
+    \listadd{\SkillsList}{\AddSkill{#1}}
+}
+
+% Skills section
+\newcommand{\SkillsSection}{
+    \iftoggle{showSkills}{
+        \ifnum\the\value{numberRightSectionsCounter}>0
+            \bigskip
+        \fi
+        \stepcounter{numberRightSectionsCounter}
+        {\Large\textcolor{curriculum-color}{\textbf{Skills}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \medskip
+        \dolistloop{\SkillsList}
     }{}
 }
 
@@ -413,5 +450,7 @@
     % Right side
     \begin{minipage}[t]{\y\textwidth}
         \LanguagesSection
+
+        \SkillsSection
     \end{minipage}
 }
