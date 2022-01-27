@@ -30,6 +30,9 @@
 % Allows configuring the parameters of environments like itemize
 \usepackage{enumitem}
 
+% Use string lengths as conditions
+\usepackage{xstring}
+
 % User defined commands and variables
 
 % Define colors
@@ -138,7 +141,7 @@
 \newcounter{educationMilestoneCounter}
 
 % Create education milestone
-\newcommand{\AddEducationMilestone}[3]{
+\newcommand{\AddEducationMilestone}[5]{
     % Empty line
 
     \ifnum\the\value{educationMilestoneCounter}>0
@@ -150,6 +153,22 @@
 
     \medskip
     \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3
+    % Check if string is empty
+    \StrLen{#4}[\ThesisStringLen]
+    \ifnum\ThesisStringLen>0
+        % Empty line
+
+        \medskip
+        \textbf{Thesis --} #4
+    \fi
+    % Check if string is empty
+    \StrLen{#5}[\SubjectsStringLen]
+    \ifnum\SubjectsStringLen>0
+        % Empty line
+
+        \medskip
+        \textbf{Main Subjects --} #5
+    \fi
     \stepcounter{educationMilestoneCounter}
 }
 
@@ -157,9 +176,9 @@
 \def\EducationMilestoneList{}
 
 % Add education milestone to list
-\newcommand{\EducationMilestone}[3]{
+\newcommand{\EducationMilestone}[5]{
     \toggletrue{showEducation}
-    \listadd{\EducationMilestoneList}{\AddEducationMilestone{#1}{#2}{#3}}
+    \listadd{\EducationMilestoneList}{\AddEducationMilestone{#1}{#2}{#3}{#4}{#5}}
 }
 
 % Education section
