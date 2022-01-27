@@ -131,44 +131,54 @@
     \AboutMeString{}
 }
 
+% Education section toggle
+\newtoggle{showEducation}
+
 % Education milestone counter
 \newcounter{educationMilestoneCounter}
 
-% Add education milestone to list
+% Create education milestone
 \newcommand{\AddEducationMilestone}[3]{
+    % Empty line
+
+    \ifnum\the\value{educationMilestoneCounter}>0
+        \bigskip
+    \else
+        \medskip
+    \fi
     {\large\textbf{#1}}
 
     \medskip
     \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3
+    \stepcounter{educationMilestoneCounter}
 }
 
 % Define education milestone list
 \def\EducationMilestoneList{}
 
-% Create education milestone
+% Add education milestone to list
 \newcommand{\EducationMilestone}[3]{
-    \stepcounter{educationMilestoneCounter}
+    \toggletrue{showEducation}
     \listadd{\EducationMilestoneList}{\AddEducationMilestone{#1}{#2}{#3}}
 }
 
 % Education section
 \newcommand{\EducationSection}{
-    \ifnum\the\value{educationMilestoneCounter}>0
-        \medskip
+    \iftoggle{showEducation}{
         {\Large\textcolor{curriculum-color}{\textbf{Education}}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
-        \medskip
         \dolistloop{\EducationMilestoneList}
-    \fi
+    }{}
 }
 
-% Languages counter
-\newcounter{languagesCounter}
+% Languages section toggle
+\newtoggle{showLanguages}
 
-% Add language to list
+% Create language
 \newcommand{\AddLanguage}[2]{
+    \smallskip
     \begin{description}[topsep=0pt,labelwidth=0.5\textwidth]
         \item[\large#1] #2
     \end{description}
@@ -177,23 +187,21 @@
 % Define languages list
 \def\LanguagesList{}
 
-% Create language
+% Add language to list
 \newcommand{\Language}[2]{
-    \stepcounter{languagesCounter}
+    \toggletrue{showLanguages}
     \listadd{\LanguagesList}{\AddLanguage{#1}{#2}}
 }
 
 % Languages section
 \newcommand{\LanguagesSection}{
-    \ifnum\the\value{languagesCounter}>0
-        \medskip
+    \iftoggle{showLanguages}{
         {\Large\textcolor{curriculum-color}{\textbf{Languages}}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
-        \medskip
         \dolistloop{\LanguagesList}
-    \fi
+    }{}
 }
 
 % Fill curriculum
@@ -204,6 +212,7 @@
 
     \AboutMeSection
 
+    \bigskip
     \noindent
     % Left side
     \begin{minipage}[t]{0.635\textwidth}
