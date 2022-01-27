@@ -250,6 +250,52 @@
     }{}
 }
 
+% Certificates section toggle
+\newtoggle{showCertificates}
+
+% Certificates counter
+\newcounter{certificatesCounter}
+
+% Create certificate
+\newcommand{\AddCertificate}[3]{
+    % Empty line
+
+    \ifnum\the\value{certificatesCounter}>0
+        \bigskip
+    \else
+        \medskip
+    \fi
+    {\large\textbf{#1}}
+
+    \medskip
+    \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3
+    \stepcounter{certificatesCounter}
+}
+
+% Define certificates list
+\def\CertificatesList{}
+
+% Add certificates to list
+\newcommand{\Certificate}[3]{
+    \toggletrue{showCertificates}
+    \listadd{\CertificatesList}{\AddCertificate{#1}{#2}{#3}}
+}
+
+% Certificates section
+\newcommand{\CertificatesSection}{
+    \iftoggle{showCertificates}{
+        \ifnum\the\value{numberLeftSectionsCounter}>0
+            \bigskip
+        \fi
+        \stepcounter{numberLeftSectionsCounter}
+        {\Large\textcolor{curriculum-color}{\textbf{Certificates}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \dolistloop{\CertificatesList}
+    }{}
+}
+
 % Languages section toggle
 \newtoggle{showLanguages}
 
@@ -296,6 +342,8 @@
         \ExperienceSection
 
         \EducationSection
+
+        \CertificatesSection
     \end{minipage}
     \hfill\textcolor{curriculum-color}{\vrule width 0.5mm}\hfill
     % Right side
