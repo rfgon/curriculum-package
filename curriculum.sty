@@ -275,7 +275,7 @@
 % Define certificates list
 \def\CertificatesList{}
 
-% Add certificates to list
+% Add certificate to list
 \newcommand{\Certificate}[3]{
     \toggletrue{showCertificates}
     \listadd{\CertificatesList}{\AddCertificate{#1}{#2}{#3}}
@@ -293,6 +293,53 @@
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
         \dolistloop{\CertificatesList}
+    }{}
+}
+
+% Projects and activities section toggle
+\newtoggle{showProjectsActivities}
+
+% Projects and activities counter
+\newcounter{projectsActivitiesCounter}
+
+% Create project and activity
+\newcommand{\AddProjectActivity}[3]{
+    % Empty line
+
+    \ifnum\the\value{projectsActivitiesCounter}>0
+        \bigskip
+    \else
+        \medskip
+    \fi
+
+    \textcolor{curriculum-color}{\faCalendar} #1\quad\textcolor{curriculum-color}{\faMapMarker} #2
+
+    \medskip
+    #3
+    \stepcounter{projectsActivitiesCounter}
+}
+
+% Define projects and activities list
+\def\ProjectsActivitiesList{}
+
+% Add project and activity to list
+\newcommand{\ProjectActivity}[3]{
+    \toggletrue{showProjectsActivities}
+    \listadd{\ProjectsActivitiesList}{\AddProjectActivity{#1}{#2}{#3}}
+}
+
+% Projects and activities section
+\newcommand{\ProjectsActivitiesSection}{
+    \iftoggle{showProjectsActivities}{
+        \ifnum\the\value{numberLeftSectionsCounter}>0
+            \bigskip
+        \fi
+        \stepcounter{numberLeftSectionsCounter}
+        {\Large\textcolor{curriculum-color}{\textbf{Projects \& Activities}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \dolistloop{\ProjectsActivitiesList}
     }{}
 }
 
@@ -344,6 +391,8 @@
         \EducationSection
 
         \CertificatesSection
+
+        \ProjectsActivitiesSection
     \end{minipage}
     \hfill\textcolor{curriculum-color}{\vrule width 0.5mm}\hfill
     % Right side
