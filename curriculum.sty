@@ -27,6 +27,9 @@
 % Use lists
 \usepackage{etoolbox}
 
+% Allows configuring the parameters of environments like itemize
+\usepackage{enumitem}
+
 % User defined commands and variables
 
 % Define colors
@@ -161,6 +164,38 @@
     \fi
 }
 
+% Languages counter
+\newcounter{languagesCounter}
+
+% Add language to list
+\newcommand{\AddLanguage}[2]{
+    \begin{description}[topsep=0pt,labelwidth=0.5\textwidth]
+        \item[\large#1] #2
+    \end{description}
+}
+
+% Define languages list
+\def\LanguagesList{}
+
+% Create language
+\newcommand{\Language}[2]{
+    \stepcounter{languagesCounter}
+    \listadd{\LanguagesList}{\AddLanguage{#1}{#2}}
+}
+
+% Languages section
+\newcommand{\LanguagesSection}{
+    \ifnum\the\value{languagesCounter}>0
+        \medskip
+        {\Large\textcolor{curriculum-color}{\textbf{Languages}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \medskip
+        \dolistloop{\LanguagesList}
+    \fi
+}
+
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
     \Header
@@ -170,7 +205,13 @@
     \AboutMeSection
 
     \noindent
+    % Left side
     \begin{minipage}[t]{0.635\textwidth}
         \EducationSection
+    \end{minipage}
+    \hfill\textcolor{curriculum-color}{\vrule width 0.5mm}\hfill
+    % Right side
+    \begin{minipage}[t]{0.335\textwidth}
+        \LanguagesSection
     \end{minipage}
 }
