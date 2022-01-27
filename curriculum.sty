@@ -134,6 +134,60 @@
     \AboutMeString{}
 }
 
+% Number of left sections shown counter
+\newcounter{numberLeftSectionsCounter}
+
+% Experience section toggle
+\newtoggle{showExperience}
+
+% Experience milestone counter
+\newcounter{experienceMilestoneCounter}
+
+% Create experience milestone
+\newcommand{\AddExperienceMilestone}[5]{
+    % Empty line
+
+    \ifnum\the\value{experienceMilestoneCounter}>0
+        \bigskip
+    \else
+        \medskip
+    \fi
+    {\large\textbf{#1}}
+
+    \medskip
+    \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3\quad\textcolor{curriculum-color}{\faClockO} #4
+    % Check if string is empty
+    \StrLen{#5}[\ProjectStringLen]
+    \ifnum\ProjectStringLen>0
+        % Empty line
+
+        \medskip
+        \textbf{Project --} #5
+    \fi
+    \stepcounter{experienceMilestoneCounter}
+}
+
+% Define experience milestone list
+\def\ExperienceMilestoneList{}
+
+% Add experience milestone to list
+\newcommand{\ExperienceMilestone}[5]{
+    \toggletrue{showExperience}
+    \listadd{\ExperienceMilestoneList}{\AddExperienceMilestone{#1}{#2}{#3}{#4}{#5}}
+}
+
+% Experience section
+\newcommand{\ExperienceSection}{
+    \iftoggle{showExperience}{
+        \stepcounter{numberLeftSectionsCounter}
+        {\Large\textcolor{curriculum-color}{\textbf{Experience}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \dolistloop{\ExperienceMilestoneList}
+    }{}
+}
+
 % Education section toggle
 \newtoggle{showEducation}
 
@@ -184,6 +238,10 @@
 % Education section
 \newcommand{\EducationSection}{
     \iftoggle{showEducation}{
+        \ifnum\the\value{numberLeftSectionsCounter}>0
+            \bigskip
+        \fi
+        \stepcounter{numberLeftSectionsCounter}
         {\Large\textcolor{curriculum-color}{\textbf{Education}}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
@@ -235,6 +293,8 @@
     \noindent
     % Left side
     \begin{minipage}[t]{0.635\textwidth}
+        \ExperienceSection
+
         \EducationSection
     \end{minipage}
     \hfill\textcolor{curriculum-color}{\vrule width 0.5mm}\hfill
