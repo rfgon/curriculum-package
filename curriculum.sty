@@ -347,7 +347,7 @@
 }
 
 % Define default left side width variable
-\FPset\x{0.635}
+\FPset\x{0.7}
 
 % Set left side width variable and adjust right side width accordingly
 \newcommand{\LeftSideWidth}[1]{
@@ -430,23 +430,23 @@
 \newtoggle{showSoftSkills}
 
 % Create soft skill
-\newcommand{\AddSoftSkill}[1]{
+\newcommand{\AddSoftSkill}[2]{
     % Empty line
 
     \medskip
-    #1
+    \textbf{#1} #2
 }
 
 % Define soft skills list
 \def\SoftSkillsList{}
 
 % Add soft skill to list
-\newcommand{\SoftSkill}[1]{
+\newcommand{\SoftSkill}[2]{
     \toggletrue{showSoftSkills}
-    \listadd{\SoftSkillsList}{\AddSoftSkill{#1}}
+    \listadd{\SoftSkillsList}{\AddSoftSkill{#1}{#2}}
 }
 
-% SoftSkills section
+% Soft Skills section
 \newcommand{\SoftSkillsSection}{
     \iftoggle{showSoftSkills}{
         \ifnum\the\value{numberRightSectionsCounter}>0
@@ -458,6 +458,41 @@
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
         \dolistloop{\SoftSkillsList}
+    }{}
+}
+
+% Interests section toggle
+\newtoggle{showInterests}
+
+% Create interest
+\newcommand{\AddInterest}[2]{
+    % Empty line
+
+    \medskip
+    \textbf{#1} #2
+}
+
+% Define interests list
+\def\InterestsList{}
+
+% Add interest to list
+\newcommand{\Interest}[2]{
+    \toggletrue{showInterests}
+    \listadd{\InterestsList}{\AddInterest{#1}{#2}}
+}
+
+% Interests section
+\newcommand{\InterestsSection}{
+    \iftoggle{showInterests}{
+        \ifnum\the\value{numberRightSectionsCounter}>0
+            \bigskip
+        \fi
+        \stepcounter{numberRightSectionsCounter}
+        {\Large\textcolor{curriculum-color}{\textbf{Interests}}}
+
+        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+
+        \dolistloop{\InterestsList}
     }{}
 }
 
@@ -489,5 +524,7 @@
         \SkillsSection
 
         \SoftSkillsSection
+
+        \InterestsSection
     \end{minipage}
 }
