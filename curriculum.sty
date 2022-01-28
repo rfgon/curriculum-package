@@ -137,6 +137,9 @@
     \AboutMeString{}
 }
 
+% Define separation between section title and horizontal rule
+\FPset\RuleSeparation{-1.5mm}
+
 % Number of left sections shown counter
 \newcounter{numberLeftSectionsCounter}
 
@@ -183,7 +186,7 @@
 \newcommand{\ExperienceSection}{
     \iftoggle{showExperience}{
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Experience}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Experience}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -245,7 +248,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Education}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Education}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -291,7 +294,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Certificates}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Certificates}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -338,7 +341,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Projects \& Activities}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Projects \& Activities}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -385,7 +388,7 @@
 \newcommand{\LanguagesSection}{
     \iftoggle{showLanguages}{
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Languages}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Languages}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -417,7 +420,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Skills}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Skills}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -453,7 +456,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Soft Skills}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Soft Skills}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
@@ -488,7 +491,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Interests}}}
+        {\Large\textcolor{curriculum-color}{\textbf{Interests}}\vspace{\RuleSeparation}}
 
         \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
 
