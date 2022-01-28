@@ -56,12 +56,12 @@
 
 % Define current job title string variable
 \newcommand{\CurrentTitleString}[1]{
-    {\noindent\Large\textcolor{curriculum-color}{\textbf{Current job title}}}
+    {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Current job title}}}
 }
 
 % Set current job title string variable
 \newcommand{\CurrentTitle}[1]{
-    \renewcommand{\CurrentTitleString}{{\noindent\Large\textcolor{curriculum-color}{\textbf{#1}}}}
+    \renewcommand{\CurrentTitleString}{{\noindent\LARGE\textcolor{curriculum-color}{\textbf{#1}}}}
 }
 
 % Name and current occupation displayed in big text
@@ -186,9 +186,7 @@
 \newcommand{\ExperienceSection}{
     \iftoggle{showExperience}{
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Experience}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Experience}}}
 
         \dolistloop{\ExperienceMilestoneList}
     }{}
@@ -248,9 +246,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Education}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Education}}}
 
         \dolistloop{\EducationMilestoneList}
     }{}
@@ -294,9 +290,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Certificates}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Certificates}}}
 
         \dolistloop{\CertificatesList}
     }{}
@@ -341,9 +335,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Projects \& Activities}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Projects \& Activities}}}
 
         \dolistloop{\ProjectsActivitiesList}
     }{}
@@ -388,9 +380,7 @@
 \newcommand{\LanguagesSection}{
     \iftoggle{showLanguages}{
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Languages}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Languages}}}
 
         \dolistloop{\LanguagesList}
     }{}
@@ -420,9 +410,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Skills}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Skills}}}
 
         \medskip
         \dolistloop{\SkillsList}
@@ -456,9 +444,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Soft Skills}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Soft Skills}}}
 
         \dolistloop{\SoftSkillsList}
     }{}
@@ -491,9 +477,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\Large\textcolor{curriculum-color}{\textbf{Interests}}\vspace{\RuleSeparation}}
-
-        \textcolor{curriculum-color}{\rule{\textwidth}{0.5mm}}
+        {\LARGE\textcolor{curriculum-color}{\textbf{Interests}}}
 
         \dolistloop{\InterestsList}
     }{}
