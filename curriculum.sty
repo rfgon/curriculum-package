@@ -36,6 +36,9 @@
 % Allows doing arithmetic with floating-point variables
 \usepackage[nomessages]{fp}
 
+% Allows independent columns of text
+\usepackage{paracol}
+
 % User defined commands and variables
 
 % Define colors
@@ -158,9 +161,10 @@
     \else
         \medskip
     \fi
-    {\large\textbf{#1}}
+    {\noindent\large\textbf{#1}}
 
     \medskip
+    \noindent
     \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3\quad\textcolor{curriculum-color}{\faClockO} #4
     % Check if string is empty
     \StrLen{#5}[\ProjectStringLen]
@@ -168,6 +172,7 @@
         % Empty line
 
         \medskip
+        \noindent
         \textbf{Project --} #5
     \fi
     \stepcounter{experienceMilestoneCounter}
@@ -186,7 +191,7 @@
 \newcommand{\ExperienceSection}{
     \iftoggle{showExperience}{
         \stepcounter{numberLeftSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Experience}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Experience}}}
 
         \dolistloop{\ExperienceMilestoneList}
     }{}
@@ -207,9 +212,10 @@
     \else
         \medskip
     \fi
-    {\large\textbf{#1}}
+    {\noindent\large\textbf{#1}}
 
     \medskip
+    \noindent
     \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3
     % Check if string is empty
     \StrLen{#4}[\ThesisStringLen]
@@ -217,6 +223,7 @@
         % Empty line
 
         \medskip
+        \noindent
         \textbf{Thesis --} #4
     \fi
     % Check if string is empty
@@ -225,6 +232,7 @@
         % Empty line
 
         \medskip
+        \noindent
         \textbf{Main Subjects --} #5
     \fi
     \stepcounter{educationMilestoneCounter}
@@ -246,7 +254,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Education}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Education}}}
 
         \dolistloop{\EducationMilestoneList}
     }{}
@@ -267,9 +275,10 @@
     \else
         \medskip
     \fi
-    {\large\textbf{#1}}
+    {\noindent\large\textbf{#1}}
 
     \medskip
+    \noindent
     \textcolor{curriculum-color}{\faCalendar} #2\quad\textcolor{curriculum-color}{\faMapMarker} #3
     \stepcounter{certificatesCounter}
 }
@@ -290,7 +299,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Certificates}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Certificates}}}
 
         \dolistloop{\CertificatesList}
     }{}
@@ -312,9 +321,11 @@
         \medskip
     \fi
 
+    \noindent
     \textcolor{curriculum-color}{\faCalendar} #1\quad\textcolor{curriculum-color}{\faMapMarker} #2
 
     \medskip
+    \noindent
     #3
     \stepcounter{projectsActivitiesCounter}
 }
@@ -335,7 +346,7 @@
             \bigskip
         \fi
         \stepcounter{numberLeftSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Projects \& Activities}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Projects \& Activities}}}
 
         \dolistloop{\ProjectsActivitiesList}
     }{}
@@ -344,14 +355,10 @@
 % Define default left side width variable
 \FPset\x{0.7}
 
-% Set left side width variable and adjust right side width accordingly
+% Set left side width variable
 \newcommand{\LeftSideWidth}[1]{
     \FPset\x{#1}
-    \FPeval{\y}{1-\x-0.03}
 }
-
-% Define default right side width variable
-\FPeval{\y}{1-\x-0.03}
 
 % Number of right sections shown counter
 \newcounter{numberRightSectionsCounter}
@@ -362,7 +369,7 @@
 % Create language
 \newcommand{\AddLanguage}[2]{
     \smallskip
-    \begin{description}[topsep=0pt,labelwidth=0.5\textwidth]
+    \begin{description}[topsep=0pt]
         \item[\large#1] #2
     \end{description}
 }
@@ -380,7 +387,7 @@
 \newcommand{\LanguagesSection}{
     \iftoggle{showLanguages}{
         \stepcounter{numberRightSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Languages}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Languages}}}
 
         \dolistloop{\LanguagesList}
     }{}
@@ -389,9 +396,16 @@
 % Skills section toggle
 \newtoggle{showSkills}
 
+% Skills counter
+\newcounter{skillsCounter}
+
 % Create skill
 \newcommand{\AddSkill}[1]{
-    \textbf{\large#1}\quad
+    \ifnum\the\value{skillsCounter}>0
+        \hfill
+    \fi
+    \textbf{\large#1}\hfill
+    \stepcounter{skillsCounter}
 }
 
 % Define skills list
@@ -410,9 +424,10 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Skills}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Skills}}}
 
         \medskip
+        \noindent
         \dolistloop{\SkillsList}
     }{}
 }
@@ -425,6 +440,7 @@
     % Empty line
 
     \medskip
+    \noindent
     \textbf{#1} #2
 }
 
@@ -444,7 +460,7 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Soft Skills}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Soft Skills}}}
 
         \dolistloop{\SoftSkillsList}
     }{}
@@ -458,6 +474,7 @@
     % Empty line
 
     \medskip
+    \noindent
     \textbf{#1} #2
 }
 
@@ -477,11 +494,23 @@
             \bigskip
         \fi
         \stepcounter{numberRightSectionsCounter}
-        {\LARGE\textcolor{curriculum-color}{\textbf{Interests}}}
+        {\noindent\LARGE\textcolor{curriculum-color}{\textbf{Interests}}}
 
         \dolistloop{\InterestsList}
     }{}
 }
+
+% Columns width
+\setcolumnwidth{\x\textwidth}
+
+% Columns separation
+\setlength\columnsep{0.03\textwidth}
+
+% Vertical line width
+\setlength{\columnseprule}{0.5mm}
+
+% Vertical line color
+\colseprulecolor{curriculum-color}
 
 % Fill curriculum
 \newcommand{\MakeCurriculum}{
@@ -492,9 +521,7 @@
     \AboutMeSection
 
     \bigskip
-    \noindent
-    % Left side
-    \begin{minipage}[t]{\x\textwidth}
+    \begin{paracol}{2}
         \ExperienceSection
 
         \EducationSection
@@ -502,10 +529,7 @@
         \CertificatesSection
 
         \ProjectsActivitiesSection
-    \end{minipage}
-    \hfill\textcolor{curriculum-color}{\vrule width 0.5mm}\hfill
-    % Right side
-    \begin{minipage}[t]{\y\textwidth}
+        \switchcolumn
         \LanguagesSection
 
         \SkillsSection
@@ -513,5 +537,5 @@
         \SoftSkillsSection
 
         \InterestsSection
-    \end{minipage}
+    \end{paracol}
 }
